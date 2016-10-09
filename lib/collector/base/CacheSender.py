@@ -39,7 +39,7 @@ class CacheSender(object):
                 log.debug("File " + self.filename + " removed after zabbix_send")
             else:
                 log.debug("Delete file cache is disabled in source code: CONS_CLEAR_FILE_AFTER_TRAP = False")
-        except IOError, ioe:
+        except IOError as ioe:
             log.debug("Error on remove file: " + str(ioe))
 
 
@@ -61,7 +61,7 @@ class CacheSender(object):
                     log.debug("Sending  %s" % (self.filename))
                     log.debug("Zabbix Server command: %s" % cmd_send)
                     log.debug("File %s -  sended by zabbix_sender %s: " % (str(self.filename), str(stdout)))
-            except (IOError, Exception), e:
+            except (IOError, Exception) as e:
                 log.debug("Error on zabbix_send - command " + cmd_send + " error: " + str(e))
             self.clearfile()
             return True
@@ -88,7 +88,7 @@ class CacheSender(object):
                 data_file.close()
                 z.send(z.build_all())
                 self.clearfile()
-            except (IOError, Exception), e:
+            except (IOError, Exception) as e:
                 log.debug("Error on send data to Zabbix (Native) - error: " + str(e))
             return True
         except:

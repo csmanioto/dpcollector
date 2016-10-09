@@ -6,13 +6,18 @@ Created on 01/10/2013
 '''
 
 #third party libs
-from threading import Thread
+'''
+pip3 install ntplib
+pip3 install configparse
+pip3 install python-daemon-3K
+pip3 install psutil
+'''
 
+from threading import Thread
+# pip3 install python-daemon-3K
 from daemon import runner
 
 
-
-#from lib.setup.Load import *
 from lib.collector.Collector import Collector
 from lib.setup.Header import CONS_PRODUCT_NAME
 from lib.setup.Load import pid_file_path, set_log, log, invoked_sleep_time, continuos_sleep_time
@@ -50,7 +55,7 @@ def call_invoked():
         log.debug("Thread Invoked Started")
         collector = Collector()
         collector.Invoked()
-        time.sleep(long(invoked_sleep_time)) # Load module - dpcollector.conf or CONSTANT
+        time.sleep(int(invoked_sleep_time)) # Load module - dpcollector.conf or CONSTANT
 
 
 # Continuous Base
@@ -61,7 +66,7 @@ def call_continuous():
         log.debug("Thread Continuous Started")
         collector = Collector()
         collector.Continuous()
-        time.sleep(long(continuos_sleep_time)) # Load module - dpcollector.conf or CONSTANT
+        time.sleep(int(continuos_sleep_time)) # Load module - dpcollector.conf or CONSTANT
 
 
 # App's is name called by runner
@@ -88,9 +93,9 @@ class App():
         th_collector = Thread(target=call_continuous, args=())
         #th_collector.daemon = True
         #th_collector.daemon = True
-        print "Starting Invoked Thread"
+        print("Starting Invoked Thread")
         th_invoked.start()
-        print "Starting Continuous Thread"
+        print("Starting Continuous Thread")
         th_collector.start()
 
         #th_collector.join()
@@ -104,10 +109,10 @@ if not DEV:
         if sys.argv[1] == None or sys.argv[1] == "start" or sys.argv[1] == "stop" or sys.argv[1] == "restart" or sys.argv[1] == "reload":
             pass
         else:
-            print "Parameter '%s' is  not valid: Valid only [start|stop|restart|reload]" % sys.argv[1]
+            print ("Parameter '{}' is  not valid: Valid only [start|stop|restart|reload]".format(sys.argv[1]))
             sys.exit(1)
     except:
-        print "%s: [start|stop|restart|reload]" % CONS_PRODUCT_NAME
+        print ("{}: [start|stop|restart|reload]".format(CONS_PRODUCT_NAME))
         sys.exit(1)
 
     if sys.argv[1] == "stop":

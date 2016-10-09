@@ -34,7 +34,6 @@ class Linux():
         Constructor
         '''
 
-
     def get_network_default_gateway(self):
         '''Read the default gateway directly from /proc.'''
         with open("/proc/net/route") as fh:
@@ -103,7 +102,7 @@ class Linux():
                 try:
                     ip = self.getIpByIface(ifname)
                     break
-                except IOError, e:
+                except IOError as e:
                     self.log.error("Error on get Lan IP " + e)
                     self.log.debug("Error on get Lan IP " + e)
                     pass
@@ -262,7 +261,7 @@ class Linux():
                 if "total" in line:
                     line = line.strip().split()
                     return line[0]
-        except Exception, e:
+        except Exception as e:
             log.debug("Error on get_folder_size: %s" % e)
             return 0
 
@@ -285,7 +284,7 @@ class Linux():
                 for line in result.split():
                     pass
                 pid = line
-        except Exception, e:
+        except Exception as e:
             log.debug("Error on get pid by pid_file: %s - %s" % (pid_file, e))
             pass
 

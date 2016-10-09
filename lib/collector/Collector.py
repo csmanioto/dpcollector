@@ -56,13 +56,13 @@ class Collector(object):
         get_db = GetDB(CONS_COLLECT_FOR["CONTINUOUS"])
         get_db.collect()
 
-        log.debug("Collector -  OS - Base - Continuos Thread")
-        get_os = GetOS(CONS_COLLECT_FOR["CONTINUOUS"])
-        get_os.collect()
+        #log.debug("Collector -  OS - Base - Continuos Thread")
+        #get_os = GetOS(CONS_COLLECT_FOR["CONTINUOUS"])
+        #get_os.collect()
 
-        log.debug("Collector -  Net - Base - Continuos Thread")
-        get_net = GetNet(CONS_COLLECT_FOR["CONTINUOUS"])
-        get_net.collect()
+        #log.debug("Collector -  Net - Base - Continuos Thread")
+        #get_net = GetNet(CONS_COLLECT_FOR["CONTINUOUS"])
+        #get_net.collect()
 
         #Send data
         self.sendData(CACHE_FILE_CONTINUOUS)

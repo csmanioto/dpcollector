@@ -111,9 +111,9 @@ log = logging.getLogger(CONS_PRODUCT_NAME)
 
 
 def set_log():
-    log.setLevel(get_loggin_level(log_level))
+#    log.setLevel(get_loggin_level(log_level))
     fh = logging.FileHandler(log_file)
-    fh.setLevel(get_loggin_level(log_level))
+#    fh.setLevel(get_loggin_level(log_level))
     fhFormatter = logging.Formatter(DEFAULT_LOGGING_FORMAT)
     fh.setFormatter(fhFormatter)
     log.addHandler(fh)

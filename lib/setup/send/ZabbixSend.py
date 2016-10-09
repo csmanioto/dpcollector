@@ -30,7 +30,7 @@ class ZabbixSend:
 
     def print_vals(self):
         for (h, k, v, t) in self.list:
-            print "Host: %s, Key: %s, Value: %s, Event: %s" % (h, k, v, t)
+            print ("Host: {}, Key: {}, Value: {}, Event: {}".formart(h, k, v, t))
 
     def build_all(self):
         tmpdata = "{\"request\":\"sender data\",\"data\":["

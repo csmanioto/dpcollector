@@ -118,7 +118,7 @@ def cursor_to_dict(cursor):
 
 
 def convert2bool(value):
-    if type(value) == type(int()) or type(long()):
+    if type(value) == type(int()) or type(int()):
         if value == 1:
             return True
         else:

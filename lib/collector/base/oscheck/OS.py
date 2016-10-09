@@ -60,14 +60,14 @@ class OS(MetaOS):
             meminfo = self.get_mem_info()
             self.write_key("os.mem_info.physical_total", fixfloat(kbytes2bytes(meminfo.memtotal)), ts)
             self.write_key("os.mem_info.physical_usage",
-                           fixfloat(kbytes2bytes(long(meminfo.memtotal) - long(meminfo.memfree))), ts)
+                           fixfloat(kbytes2bytes(int(meminfo.memtotal) - int(meminfo.memfree))), ts)
             self.write_key("os.mem_info.physical_free", fixfloat(kbytes2bytes(meminfo.memfree)), ts)
             self.write_key("os.mem_info.vm_cached", fixfloat(kbytes2bytes(meminfo.cached)), ts)
             self.write_key("os.mem_info.vm_buffers", fixfloat(kbytes2bytes(meminfo.buffers)), ts)
             self.write_key("os.mem_info.vm_swap_total", fixfloat(kbytes2bytes(meminfo.swaptotal)), ts)
             self.write_key("os.mem_info.vm_swap_free", fixfloat(kbytes2bytes(meminfo.swapfree)), ts)
             self.write_key("os.mem_info.vm_swap_usage",
-                           fixfloat(kbytes2bytes(long(meminfo.swaptotal) - long(meminfo.swapfree))), ts)
+                           fixfloat(kbytes2bytes(int(meminfo.swaptotal) - int(meminfo.swapfree))), ts)
 
     def collect_load_info(self, priority=1):
         ts = str(int(time.time()))

@@ -56,7 +56,7 @@ class WriteCache(object):
                     with open(self.filename, 'a') as f:
                         f.write(my_object.popleft())
                         log.debug("Write: flush to disk %s (%d bytes)." % (self.filename, len(my_object)))
-        except (OSError, IOError), e:
+        except (OSError, IOError) as e:
             log.debug("Error: Write data to disk: " + str(e))
 
     def toBuffer(self, line):

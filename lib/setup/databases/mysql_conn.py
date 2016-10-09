@@ -55,7 +55,7 @@ class MySQLConnect(object):
                 self.__conx = mysql.connector.connect(user=self.user, password=self.password, host=self.host,
                                                       database='mysql', raw=self.raw_value,
                                                       connection_timeout=MYSQL_CONNECTION_TIMEOUT)
-        except Exception, e:
+        except Exception as e:
             log.debug("Error on connect database: %s" % (e))
             log.debug("Error on MySQL with user %s host %s, database %s and socket %s" % (
             self.user, str(self.host), str(self.database), str(self.socket)))
@@ -135,7 +135,7 @@ class MySQLConnect(object):
                 for row in cursor.fetchall():
                     status['number_database'] = row[0]
                     status['total_data'] = row[1]
-            except Exception, e:
+            except Exception as e:
                 log.debug("Error %s on execute %s" % (e, query))
                 status['number_database'] = 0
                 status['total_data'] = 0
@@ -157,7 +157,7 @@ class MySQLConnect(object):
                 status[row['Variable_name']] = row['Value']
             cur.close()
             return status
-        except Exception, e:
+        except Exception as e:
             log.debug("Error %s on execute %s" % (e, query))
 
     def mysql_show_variables(self):
@@ -170,7 +170,7 @@ class MySQLConnect(object):
                 status[row['Variable_name'].lower()] = row['Value']
             cur.close()
             return status
-        except Exception, e:
+        except Exception as e:
             log.debug("Error %s on execute %s" % (e, query))
 
     def mysql_memory_usage(self):
@@ -221,7 +221,7 @@ class MySQLConnect(object):
             #status['qps'] = qt2 - qt1
             status['qps'] = qt1
             return status
-        except Exception, e:
+        except Exception as e:
             log.debug("Error %s on execute %s" % (e, query))
 
 
@@ -234,7 +234,7 @@ class MySQLConnect(object):
                 pass
             cur.close()
             return row
-        except Exception, e:
+        except Exception as e:
             log.debug("Error %s on execute %s" % (e, query))
 
     def mysql_slave_status(self):
@@ -246,7 +246,7 @@ class MySQLConnect(object):
                 pass
             cur.close()
             return row
-        except Exception, e:
+        except Exception as e:
             log.debug("Error %s on execute %s" % (e, query))
 
     def mysql_show_engine_innodb_status(self):
@@ -262,7 +262,7 @@ class MySQLConnect(object):
             cur.close()
             retorno = parse_innodb_status(row, self.mysql_version_tuple())
             return retorno
-        except Exception, e:
+        except Exception as e:
             log.debug("Error %s on execute %s" % (e, query))
 
 

@@ -7,7 +7,7 @@ http://bip.weizmann.ac.il/course/python/PyMOTW/PyMOTW/docs/ConfigParser/index.ht
 
 import os
 
-import ConfigParser
+import configparser
 from lib.setup.Header import CONS_NTP_SERVER, CONS_INVOKED_SLEEP_TIME, CONS_CONTINUOUS_SlEEP_TIME
 
 
@@ -62,7 +62,7 @@ class Configuration_File:
 
     def makeFile(self):
         if os.path.isfile(self.file_name) == False:
-            config = ConfigParser.RawConfigParser()
+            config = configparser.RawConfigParser()
 
             ### Master Session
             config.add_section('system')
@@ -128,7 +128,7 @@ class Configuration_File:
 
     def readFile(self):
         # makeFile(self)
-        config = ConfigParser.ConfigParser()
+        config = configparser.ConfigParser()
 
         try:
             config.read(self.file_name)
@@ -202,5 +202,5 @@ class Configuration_File:
                     self.network_bigip_enabled = False
 
 
-        except Exception, e:
-            print e
+        except Exception as e:
+            print(e)

@@ -27,6 +27,7 @@ class GetOS(object):
             self.filename = CACHE_FILE_CONTINUOUS
 
     def collect(self):
-        os_collect = OS(self.filename)
-        os_collect.collect_all(self.priority)
+        pass
+        #os_collect = OS(self.filename)
+        #os_collect.collect_all(self.priority)
     
